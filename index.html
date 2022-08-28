@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Language Generator</title>
+  <link rel="canonical" href=".">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <meta name="description" content="Generate random music.">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <script defer src="https://cdn.jsdelivr.net/npm/web-midi-player@latest/index.js"></script>
+  <style>
+    body {
+      align-items: center;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+    }
+    button {
+      background: transparent;
+      border: none;
+      font-size: xxx-large;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <button id="generate">🔀</button>
+  <script type="text/javascript">
+    window.addEventListener("DOMContentLoaded", () => {
+      const { "web-midi-player": { default: MidiPlayer } } = window;
+      const midiPlayer = new MidiPlayer();
+      document.getElementById("generate").addEventListener("click", () => {
+        midiPlayer.play({ url: 'generate?r=' + Math.random().toString(20).substring(2, 6) });
+      });
+    });
+  </script>
+</body>
+</html>
